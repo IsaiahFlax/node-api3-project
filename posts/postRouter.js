@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   .then(posts=> {
     res.status(200).json(posts)
   })
-});
+})
 
 router.get('/:id', validatePostId, (req, res) => {
   // do your magic!
@@ -22,9 +22,9 @@ router.get('/:id', validatePostId, (req, res) => {
     console.log(error);
     res.status(500).json({
       error:"The posts could not be retrieved."
-    });
+    })
   })
-});
+})
 
 router.delete('/:id', validatePostId, (req, res) => {
   postDb.getById(req.params.id)

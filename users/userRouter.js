@@ -4,10 +4,13 @@ const router = express.Router();
 
 const userDb = require('./userDb')
 
-const postDb = require('../posts/postDb')
 
 router.post('/', (req, res) => {
   // do your magic!
+  userDb.get(req.query)
+  .then(users => {
+    res.status(200).json(users)
+  })
 });
 
 router.post('/:id/posts', (req, res) => {
@@ -16,6 +19,10 @@ router.post('/:id/posts', (req, res) => {
 
 router.get('/', (req, res) => {
   // do your magic!
+  userDb.get(req.query)
+  .then(users => {
+    res.status(200).json(users)
+  })
 });
 
 router.get('/:id', (req, res) => {
@@ -74,8 +81,7 @@ function validateUser(req, res, next) {
   }
 }
 
-function validatePost(req, res, next) {
-  // do your magic!
-}
+
+
 
 module.exports = router;
