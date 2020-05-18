@@ -45,4 +45,9 @@ server.use(errorHandler);
 server.get('/', (req, res) => {
   res.send(`<h2>Let's write some middleware!</h2>`);
 });
+
+server.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'))
+})
+
 module.exports = server;
