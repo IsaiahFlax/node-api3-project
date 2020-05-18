@@ -16,6 +16,8 @@ var logger = function (req, res, next) {
 }
 server.use(logger)
 
+server.use(express.static(path.join(__dirname, 'client/build'))) 
+
 server.use('/api/users', userRouter)
 server.use('/api/posts', postRouter)
 
