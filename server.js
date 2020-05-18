@@ -10,6 +10,12 @@ const server = express();
 
 server.use(express.json())
 
+var logger = function (req, res, next) {
+  console.log('logger', req.method)
+  next()
+}
+server.use(logger)
+
 server.use('/api/users', userRouter)
 server.use('/api/posts', postRouter)
 
@@ -22,11 +28,7 @@ server.use('/api/posts', postRouter)
 //logger logs to the console the following information about each request: request method, request url, and a timestamp
 //this middleware runs on every request made to the API
 
-var logger = function (req, res, next) {
-  console.log('logger', req.method)
-  next()
-}
-server.use(logger)
+
 
 
 
