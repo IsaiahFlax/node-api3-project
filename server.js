@@ -8,7 +8,11 @@ const postRouter = require("./posts/postRouter")
 
 const server = express();
 
+const cors = require('cors')
+
 server.use(express.json())
+
+server.use(cors())
 
 var logger = function (req, res, next) {
   console.log('logger', req.method)
